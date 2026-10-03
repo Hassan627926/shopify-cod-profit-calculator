@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Free Shopify COD Profit Calculator. Calculate sales, delivery costs, advertising costs, returns, net profit and profit margin.">
+<title>Shopify COD Profit Calculator</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f7fb;color:#172033}
+.container{max-width:1100px;margin:auto;padding:32px 18px}
+header{text-align:center;margin-bottom:28px}h1{font-size:38px;margin:8px 0 10px}header p{color:#657089;max-width:700px;margin:auto;line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{background:#fff;border:1px solid #e5e9f0;border-radius:18px;padding:24px;box-shadow:0 8px 28px rgba(20,30,50,.06)}
+h2{font-size:20px;margin:0 0 20px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#45516a}
+input{width:100%;padding:12px 13px;border:1px solid #d8deea;border-radius:10px;font-size:16px;outline:none}
+input:focus{border-color:#5b67f1;box-shadow:0 0 0 3px rgba(91,103,241,.12)}
+button{width:100%;border:0;border-radius:11px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;background:#111827;color:white;margin-top:20px}
+button:hover{opacity:.92}.results{display:grid;grid-template-columns:1fr 1fr;gap:12px}.metric{padding:16px;border:1px solid #e7eaf1;border-radius:13px;background:#fafbfe}.metric span{display:block;color:#69758c;font-size:12px;margin-bottom:7px}.metric strong{font-size:21px}.profit{background:#eefbf3;border-color:#bde8cc}.loss{background:#fff2f2;border-color:#f1c4c4}.profit strong{color:#137a3b}.loss strong{color:#c52f2f}
+.breakdown{margin-top:18px;border-top:1px solid #edf0f5;padding-top:15px}.row{display:flex;justify-content:space-between;padding:9px 0;color:#526078}.row b{color:#172033}.note{font-size:12px;color:#7a8599;margin-top:16px;line-height:1.5}
+footer{text-align:center;color:#7a8599;font-size:12px;margin-top:25px}
+@media(max-width:760px){h1{font-size:30px}.grid{grid-template-columns:1fr}.fields,.results{grid-template-columns:1fr 1fr}.card{padding:18px}}
+@media(max-width:430px){.fields,.results{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div style="font-weight:800;letter-spacing:.5px">ECOMMERCE TOOL</div>
+  <h1>Shopify COD Profit Calculator</h1>
+  <p>Calculate your estimated sales, product cost, advertising cost, delivery expense, return rate and net profit from your COD orders.</p>
+</header>
+
+<div class="grid">
+<section class="card">
+<h2>Order Details</h2>
+<div class="fields">
+<div><label>Received Orders</label><input id="received" type="number" min="0" value="25"></div>
+<div><label>Dispatch Orders</label><input id="dispatch" type="number" min="0" value="15"></div>
+<div><label>Delivered Orders</label><input id="delivered" type="number" min="0" value="7"></div>
+<div><label>Returned Orders</label><input id="returned" type="number" min="0" value="2"></div>
+</div>
+
+<h2 style="margin-top:24px">Cost & Pricing</h2>
+<div class="fields">
+<div><label>Selling Price / Delivered Order</label><input id="selling" type="number" min="0" value="2600"></div>
+<div><label>Product Cost / Order</label><input id="product" type="number" min="0" value="150"></div>
+<div><label>Ad Cost / Received Order</label><input id="ad" type="number" min="0" value="336"></div>
+<div><label>Delivery Cost / Dispatch</label><input id="delivery" type="number" min="0" value="230"></div>
+</div>
+<button onclick="calculate()">Calculate Profit</button>
+<div class="note">The calculation follows the order-flow model: sales are based on delivered orders, advertising is based on received orders, and delivery expense is based on dispatched orders.</div>
+</section>
+
+<section class="card">
+<h2>Profit Summary</h2>
+<div class="results">
+<div class="metric"><span>Total Sales</span><strong id="sales">Rs. 0</strong></div>
+<div class="metric"><span>Product Cost</span><strong id="productTotal">Rs. 0</strong></div>
+<div class="metric"><span>Advertising Cost</span><strong id="adTotal">Rs. 0</strong></div>
+<div class="metric"><span>Delivery Cost</span><strong id="deliveryTotal">Rs. 0</strong></div>
+<div id="netBox" class="metric profit"><span>Net Profit / Loss</span><strong id="net">Rs. 0</strong></div>
+<div class="metric"><span>Profit Margin</span><strong id="margin">0%</strong></div>
+<div class="metric"><span>Profit / Delivered Order</span><strong id="perOrder">Rs. 0</strong></div>
+<div class="metric"><span>Delivery Rate</span><strong id="deliveryRate">0%</strong></div>
+</div>
+<div class="breakdown">
+<div class="row"><span>Return Rate (of dispatch)</span><b id="returnRate">0%</b></div>
+<div class="row"><span>In-Transit Orders</span><b id="transit">0</b></div>
+<div class="row"><span>Ad Cost / Delivered Order</span><b id="adDelivered">Rs. 0</b></div>
+<div class="row"><span>Break-even Selling Price</span><b id="breakEven">Rs. 0</b></div>
+</div>
+</section>
+</div>
+<footer>Free Shopify COD Profit Calculator</footer>
+</div>
+
+<script>
+function n(id){return Math.max(0, Number(document.getElementById(id).value)||0)}
+function money(x){return "Rs. " + Math.round(x).toLocaleString("en-PK")}
+function pct(x){return (isFinite(x)?x:0).toFixed(2)+"%"}
+function calculate(){
+ const received=n("received"), dispatch=n("dispatch"), delivered=n("delivered"), returned=n("returned");
+ const selling=n("selling"), product=n("product"), ad=n("ad"), delivery=n("delivery");
+ const sales=selling*delivered;
+ const productTotal=product*delivered;
+ const adTotal=ad*received;
+ const deliveryTotal=delivery*dispatch;
+ const net=sales-productTotal-adTotal-deliveryTotal;
+ const margin=sales?net/sales*100:0;
+ const transit=Math.max(0,dispatch-delivered-returned);
+ const deliveryRate=dispatch?delivered/dispatch*100:0;
+ const returnRate=dispatch?returned/dispatch*100:0;
+ const adDelivered=delivered?adTotal/delivered:0;
+ const breakEven=delivered?((productTotal+adTotal+deliveryTotal)/delivered):0;
+ document.getElementById("sales").textContent=money(sales);
+ document.getElementById("productTotal").textContent=money(productTotal);
+ document.getElementById("adTotal").textContent=money(adTotal);
+ document.getElementById("deliveryTotal").textContent=money(deliveryTotal);
+ document.getElementById("net").textContent=(net<0?"- ":"")+money(Math.abs(net)).replace("Rs. ","Rs. ");
+ document.getElementById("margin").textContent=pct(margin);
+ document.getElementById("perOrder").textContent=money(delivered?net/delivered:0);
+ document.getElementById("deliveryRate").textContent=pct(deliveryRate);
+ document.getElementById("returnRate").textContent=pct(returnRate);
+ document.getElementById("transit").textContent=transit.toLocaleString("en-PK");
+ document.getElementById("adDelivered").textContent=money(adDelivered);
+ document.getElementById("breakEven").textContent=money(breakEven);
+ const box=document.getElementById("netBox"); box.className="metric "+(net>=0?"profit":"loss");
+}
+calculate();
+</script>
+</body>
+</html>
