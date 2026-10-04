@@ -16,6 +16,7 @@ const links = [
   ["roas-calculator.html", "ROAS Calculator"],
   ["break-even-roas.html", "Break-Even ROAS"],
   ["product-margin-calculator.html", "Product Margin"],
+  ["product-pricing-calculator.html", "Product Pricing"]
   
 ];
 
