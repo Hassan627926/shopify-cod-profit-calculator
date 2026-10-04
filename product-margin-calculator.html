@@ -1,206 +1,440 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Product Profit Margin Calculator - Free E-commerce Tool | EcomTools</title>
-<meta name="description" content="Free product profit margin calculator for e-commerce sellers. Calculate profit, profit margin, markup and net profit after product, shipping, payment and advertising costs.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://shopify-cod-profit-calculator.pages.dev/product-margin-calculator.html">
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f6f8fc;color:#172033;line-height:1.6}
-a{text-decoration:none;color:inherit}
-header{background:#fff;border-bottom:1px solid #e5eaf1;position:sticky;top:0;z-index:5}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:23px;font-weight:800;color:#155eef;text-decoration:none}
-.logo span{color:#172033}
-.nav nav{display:flex;align-items:center;gap:22px}
-.nav nav a{font-size:14px;font-weight:600;color:#172033;text-decoration:none}
-.nav nav a:hover{color:#2563eb}
-.nav .btn{background:#2563eb;color:#fff;padding:12px 16px;border-radius:8px}
-.nav .btn:hover{color:#fff;background:#1d4ed8}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Product Profit Margin Calculator – Free E-commerce Tool</title>
 
-.hero{text-align:center;padding:60px 20px 38px;background:#fff}
-.badge{display:inline-block;background:#eef4ff;color:#2563eb;padding:7px 12px;border-radius:30px;font-size:13px;font-weight:700}
-h1{font-size:42px;line-height:1.15;margin:18px auto 12px}
-.hero p{max-width:720px;margin:auto;color:#687589;font-size:17px}
-.wrap-content{max-width:850px;margin:25px auto 60px;padding:0 20px}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px;margin-bottom:25px;box-shadow:0 8px 25px rgba(15,23,42,.06)}
-.card h2{text-align:center}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
-input{width:100%;padding:14px;border:1px solid #d6dde8;border-radius:10px;font-size:16px}
-input:focus{outline:2px solid #d8e6ff;border-color:#2563eb}
-button{width:100%;margin-top:20px;padding:15px;border:0;border-radius:10px;background:#2563eb;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
-button:hover{background:#1d4ed8}
-.result{margin-top:22px;padding:22px;border-radius:12px;background:#f8fafc;text-align:center}
-.profit{font-size:42px;font-weight:800;color:#168044}
-.loss{font-size:42px;font-weight:800;color:#c62828}
-.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-.metric{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px}
-.metric strong{display:block;font-size:18px}
-.metric span{font-size:12px;color:#687589}
-.formula{background:#f1f5f9;border-radius:10px;padding:16px;font-weight:700;text-align:center}
-.faq{border-top:1px solid #e5eaf1;padding:16px 0}
-footer{background:#101827;color:#b8c3d1;padding:28px 20px;text-align:center}
-footer a{margin:0 8px;color:inherit;text-decoration:none}
+    <meta name="description"
+        content="Free product profit margin calculator for e-commerce sellers. Calculate profit per order, profit margin, markup and total cost quickly.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://shopify-cod-profit-calculator.pages.dev/product-margin-calculator.html">
+    <style>
+        * {
+            box-sizing: border-box
+        }
 
-@media(max-width:700px){
-.nav nav a:nth-child(4),.nav nav a:nth-child(5),.nav nav a:nth-child(6){display:none}
-.nav nav{gap:10px}
-.nav .btn{padding:10px 12px}
-h1{font-size:31px}
-.grid{grid-template-columns:1fr}
-.card{padding:20px}
-.result-grid{grid-template-columns:1fr}
-}
-</style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f6f8fc;
+            color: #172033;
+            line-height: 1.6
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e5eaf1;
+            position: sticky;
+            top: 0;
+            z-index: 5
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        .nav {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            color: #155eef;
+            text-decoration: none
+        }
+
+        .logo span {
+            color: #172033
+        }
+
+        .nav nav {
+            display: flex;
+            align-items: center;
+            gap: 22px
+        }
+
+        .nav nav a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #172033;
+            text-decoration: none
+        }
+
+        .nav nav a:hover {
+            color: #2563eb
+        }
+
+        .nav .btn {
+            background: #2563eb;
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 8px
+        }
+
+        .nav .btn:hover {
+            color: #fff;
+            background: #1d4ed8
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 38px;
+            background: #fff
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef4ff;
+            color: #2563eb;
+            padding: 7px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.15;
+            margin: 18px auto 12px
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #687589;
+            font-size: 17px
+        }
+
+        .wrap-content {
+            max-width: 850px;
+            margin: 25px auto 60px;
+            padding: 0 20px
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, .06)
+        }
+
+        .card h2 {
+            text-align: center
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d6dde8;
+            border-radius: 10px;
+            font-size: 16px
+        }
+
+        input:focus {
+            outline: 2px solid #d8e6ff;
+            border-color: #2563eb
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            border: 0;
+            border-radius: 10px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        button:hover {
+            background: #1d4ed8
+        }
+
+        .result {
+            margin-top: 22px;
+            padding: 22px;
+            border-radius: 12px;
+            background: #f8fafc;
+            text-align: center
+        }
+
+        .profit {
+            font-size: 42px;
+            font-weight: 800;
+            color: #168044
+        }
+
+        .loss {
+            font-size: 42px;
+            font-weight: 800;
+            color: #c62828
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .metric {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 18px
+        }
+
+        .metric span {
+            font-size: 12px;
+            color: #687589
+        }
+
+        .formula {
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 16px;
+            font-weight: 700;
+            text-align: center
+        }
+
+        .faq {
+            border-top: 1px solid #e5eaf1;
+            padding: 16px 0
+        }
+
+        footer {
+            background: #101827;
+            color: #b8c3d1;
+            padding: 28px 20px;
+            text-align: center
+        }
+
+        footer a {
+            margin: 0 8px;
+            color: inherit;
+            text-decoration: none
+        }
+
+        @media(max-width:700px) {
+
+            .nav nav a:nth-child(4),
+            .nav nav a:nth-child(5),
+            .nav nav a:nth-child(6) {
+                display: none
+            }
+
+            .nav nav {
+                gap: 10px
+            }
+
+            .nav .btn {
+                padding: 10px 12px
+            }
+
+            h1 {
+                font-size: 31px
+            }
+
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .card {
+                padding: 20px
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div id="site-header"></div>
-<script src="header.js"></script>
+    <div id="site-header"></div>
+    <script src="header.js"></script>
 
 
 
-<section class="hero">
-<span class="badge">FREE E-COMMERCE TOOL</span>
-<h1>Product Profit Margin Calculator</h1>
-<p>Calculate your product profit, profit margin and markup after product, shipping, payment and advertising costs.</p>
-</section>
+    <section class="hero">
+        <span class="badge">FREE E-COMMERCE TOOL</span>
+        <h1>Product Profit Margin Calculator</h1>
+        <p>Calculate your product profit, profit margin and markup after product, shipping, payment and advertising
+            costs.</p>
+    </section>
 
-<main class="wrap-content">
+    <main class="wrap-content">
 
-<section class="card">
-<h2>Calculate Your Product Profit</h2>
+        <section class="card">
+            <h2>Calculate Your Product Profit</h2>
 
-<div class="grid">
-<div>
-<label for="selling">Selling Price (Rs.)</label>
-<input id="selling" type="number" min="0" step=".01" placeholder="e.g. 2500">
-</div>
+            <div class="grid">
+                <div>
+                    <label for="selling">Selling Price (Rs.)</label>
+                    <input id="selling" type="number" min="0" step=".01" placeholder="e.g. 2500">
+                </div>
 
-<div>
-<label for="product">Product Cost (Rs.)</label>
-<input id="product" type="number" min="0" step=".01" placeholder="e.g. 1000">
-</div>
+                <div>
+                    <label for="product">Product Cost (Rs.)</label>
+                    <input id="product" type="number" min="0" step=".01" placeholder="e.g. 1000">
+                </div>
 
-<div>
-<label for="shipping">Shipping Cost (Rs.)</label>
-<input id="shipping" type="number" min="0" step=".01" placeholder="e.g. 200">
-</div>
+                <div>
+                    <label for="shipping">Shipping Cost (Rs.)</label>
+                    <input id="shipping" type="number" min="0" step=".01" placeholder="e.g. 200">
+                </div>
 
-<div>
-<label for="payment">Payment Fee (%)</label>
-<input id="payment" type="number" min="0" step=".01" placeholder="e.g. 2">
-</div>
+                <div>
+                    <label for="payment">Payment Fee (%)</label>
+                    <input id="payment" type="number" min="0" step=".01" placeholder="e.g. 2">
+                </div>
 
-<div>
-<label for="ads">Advertising Cost Per Order (Rs.)</label>
-<input id="ads" type="number" min="0" step=".01" placeholder="e.g. 300">
-</div>
+                <div>
+                    <label for="ads">Advertising Cost Per Order (Rs.)</label>
+                    <input id="ads" type="number" min="0" step=".01" placeholder="e.g. 300">
+                </div>
 
-<div>
-<label for="other">Other Cost Per Order (Rs.)</label>
-<input id="other" type="number" min="0" step=".01" placeholder="e.g. 50">
-</div>
-</div>
+                <div>
+                    <label for="other">Other Cost Per Order (Rs.)</label>
+                    <input id="other" type="number" min="0" step=".01" placeholder="e.g. 50">
+                </div>
+            </div>
 
-<button onclick="calculate()">Calculate Profit Margin</button>
+            <button onclick="calculate()">Calculate Profit Margin</button>
 
-<div id="result" class="result" style="display:none">
-<div>Your Net Profit Per Order</div>
-<div id="profit" class="profit">Rs. 0</div>
+            <div id="result" class="result" style="display:none">
+                <div>Your Net Profit Per Order</div>
+                <div id="profit" class="profit">Rs. 0</div>
 
-<div class="result-grid">
-<div class="metric"><strong id="margin">0%</strong><span>Net Profit Margin</span></div>
-<div class="metric"><strong id="markup">0%</strong><span>Markup on Product Cost</span></div>
-<div class="metric"><strong id="cost">Rs. 0</strong><span>Total Cost Per Order</span></div>
-</div>
-</div>
-</section>
+                <div class="result-grid">
+                    <div class="metric"><strong id="margin">0%</strong><span>Net Profit Margin</span></div>
+                    <div class="metric"><strong id="markup">0%</strong><span>Markup on Product Cost</span></div>
+                    <div class="metric"><strong id="cost">Rs. 0</strong><span>Total Cost Per Order</span></div>
+                </div>
+            </div>
+        </section>
 
-<section class="card">
-<h2>What Is Product Profit Margin?</h2>
-<p>Product profit margin shows how much of your selling price remains as profit after the costs included in the calculation.</p>
+        <section class="card">
+            <h2>What Is Product Profit Margin?</h2>
+            <p>Product profit margin shows how much of your selling price remains as profit after the costs included in
+                the calculation.</p>
 
-<div class="formula">Profit Margin = Net Profit ÷ Selling Price × 100</div>
+            <div class="formula">Profit Margin = Net Profit ÷ Selling Price × 100</div>
 
-<h3>Example</h3>
-<p>If a product sells for PKR 2,500 and your total cost per order is PKR 1,550:</p>
-<p class="formula">2,500 − 1,550 = PKR 950 Profit</p>
-<p>Your profit margin would be <strong>38%</strong>.</p>
+            <h3>Example</h3>
+            <p>If a product sells for PKR 2,500 and your total cost per order is PKR 1,550:</p>
+            <p class="formula">2,500 − 1,550 = PKR 950 Profit</p>
+            <p>Your profit margin would be <strong>38%</strong>.</p>
 
-<h2>Profit Margin vs Markup</h2>
-<p>Profit margin compares profit with the selling price, while markup compares profit with the product cost. These are different measurements and should not be treated as the same.</p>
+            <h2>Profit Margin vs Markup</h2>
+            <p>Profit margin compares profit with the selling price, while markup compares profit with the product cost.
+                These are different measurements and should not be treated as the same.</p>
 
-<h2>Frequently Asked Questions</h2>
+            <h2>Frequently Asked Questions</h2>
 
-<div class="faq">
-<strong>What costs should I include?</strong>
-<p>Include the costs that directly affect each order, such as product cost, shipping, payment fees, advertising and other per-order expenses.</p>
-</div>
+            <div class="faq">
+                <strong>What costs should I include?</strong>
+                <p>Include the costs that directly affect each order, such as product cost, shipping, payment fees,
+                    advertising and other per-order expenses.</p>
+            </div>
 
-<div class="faq">
-<strong>Is a higher profit margin always better?</strong>
-<p>A higher margin generally gives you more room for advertising, discounts and unexpected costs, but sales volume and customer acquisition costs also matter.</p>
-</div>
+            <div class="faq">
+                <strong>Is a higher profit margin always better?</strong>
+                <p>A higher margin generally gives you more room for advertising, discounts and unexpected costs, but
+                    sales volume and customer acquisition costs also matter.</p>
+            </div>
 
-<div class="faq">
-<strong>Can I use this for Shopify products?</strong>
-<p>Yes. Enter the selling price and your estimated per-order costs to estimate product-level profitability.</p>
-</div>
+            <div class="faq">
+                <strong>Can I use this for Shopify products?</strong>
+                <p>Yes. Enter the selling price and your estimated per-order costs to estimate product-level
+                    profitability.</p>
+            </div>
 
-</section>
+        </section>
 
-</main>
+    </main>
 
-<footer>
-© 2026 EcomTools. All rights reserved.<br>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-<a href="disclaimer.html">Disclaimer</a>
-</footer>
+    <footer>
+        © 2026 EcomTools. All rights reserved.<br>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+    </footer>
 
-<script>
-function n(id){
-return Math.max(0,Number(document.getElementById(id).value)||0);
-}
+    <script>
+        function n(id) {
+            return Math.max(0, Number(document.getElementById(id).value) || 0);
+        }
 
-function money(x){
-return "Rs. "+Math.round(x).toLocaleString("en-PK");
-}
+        function money(x) {
+            return "Rs. " + Math.round(x).toLocaleString("en-PK");
+        }
 
-function calculate(){
-const selling=n("selling");
-const product=n("product");
-const shipping=n("shipping");
-const paymentRate=n("payment");
-const ads=n("ads");
-const other=n("other");
+        function calculate() {
+            const selling = n("selling");
+            const product = n("product");
+            const shipping = n("shipping");
+            const paymentRate = n("payment");
+            const ads = n("ads");
+            const other = n("other");
 
-if(selling<=0){
-alert("Please enter a valid selling price.");
-return;
-}
+            if (selling <= 0) {
+                alert("Please enter a valid selling price.");
+                return;
+            }
 
-const payment=selling*(paymentRate/100);
-const totalCost=product+shipping+payment+ads+other;
-const profit=selling-totalCost;
-const margin=(profit/selling)*100;
-const markup=product>0?(profit/product)*100:0;
+            const payment = selling * (paymentRate / 100);
+            const totalCost = product + shipping + payment + ads + other;
+            const profit = selling - totalCost;
+            const margin = (profit / selling) * 100;
+            const markup = product > 0 ? (profit / product) * 100 : 0;
 
-document.getElementById("profit").textContent=money(profit);
-document.getElementById("profit").className=profit>=0?"profit":"loss";
-document.getElementById("margin").textContent=margin.toFixed(2)+"%";
-document.getElementById("markup").textContent=markup.toFixed(2)+"%";
-document.getElementById("cost").textContent=money(totalCost);
-document.getElementById("result").style.display="block";
-}
-</script>
+            document.getElementById("profit").textContent = money(profit);
+            document.getElementById("profit").className = profit >= 0 ? "profit" : "loss";
+            document.getElementById("margin").textContent = margin.toFixed(2) + "%";
+            document.getElementById("markup").textContent = markup.toFixed(2) + "%";
+            document.getElementById("cost").textContent = money(totalCost);
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
 
 </body>
+
 </html>

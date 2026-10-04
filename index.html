@@ -1,91 +1,531 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="google-site-verification" content="FT3t6yEsjQ6P8rU_NEKk57aUiP7mEp3bCjxNYbHRePY" />
-<title>Shopify Profit Calculator – Free COD & E-commerce Profit Calculator</title>
-<meta name="description" content="Free Shopify profit calculator for e-commerce and COD sellers. Calculate sales, product cost, advertising cost, delivery cost, profit margin and return rate.">
-<meta name="robots" content="index,follow">
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f8fc;color:#172033;line-height:1.6}a{text-decoration:none;color:inherit}.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-header{background:#fff;border-bottom:1px solid #e5eaf1;position:sticky;top:0;z-index:5}
-.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:23px;font-weight:800;color:#155eef;text-decoration:none}
-.logo span{color:#172033}
-.nav nav{display:flex;align-items:center;gap:22px}
-.nav nav a{font-size:14px;font-weight:600;color:#172033;text-decoration:none}
-.nav nav a:hover{color:#2563eb}
-.nav .btn{background:#2563eb;color:#fff;padding:12px 16px;border-radius:8px}
-.nav .btn:hover{color:#fff;background:#1d4ed8}
-.hero{text-align:center;padding:65px 0 45px;background:#fff}.badge{display:inline-block;padding:6px 12px;border-radius:30px;background:#eaf2ff;color:#155eef;font-weight:700;font-size:13px}.hero h1{font-size:clamp(36px,6vw,58px);line-height:1.05;margin:18px auto 15px;max-width:850px}.hero p{max-width:700px;margin:auto;color:#657287;font-size:18px}
-section{padding:45px 0}.card{background:white;border:1px solid #e1e7ef;border-radius:16px;padding:26px;box-shadow:0 12px 35px #1720330d}.head{margin-bottom:20px}.head h2{margin:0;font-size:26px}.head p{margin:4px 0;color:#718096;font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#39465a}input{width:100%;padding:13px;border:1px solid #d6deea;border-radius:8px;font-size:15px}input:focus{outline:2px solid #d8e6ff;border-color:#155eef}.calc{width:100%;margin-top:20px;border:0;background:#155eef;color:#fff;padding:14px;border-radius:9px;font-size:16px;font-weight:800;cursor:pointer}
-.results{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:23px}.result{padding:15px;background:#f7f9fc;border:1px solid #e3e8f0;border-radius:10px}.result small{display:block;color:#687589;font-size:12px}.result strong{font-size:19px}.profit{background:#edf8f1;border-color:#ccebd7}.profit strong{color:#168044}.loss{background:#fff1f1;border-color:#f0d0d0}.loss strong{color:#c62828}
-.title{text-align:center;max-width:700px;margin:0 auto 28px}.title h2{font-size:30px;margin:0 0 6px}.title p{color:#687589}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{background:#fff;border:1px solid #e2e8f0;border-radius:13px;padding:22px}.feature h3{margin:6px 0}.feature p{margin:0;color:#687589;font-size:14px}
-.article,.faq{max-width:820px;margin:auto}.article{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:28px}.article h2{margin-top:0}.article h3{margin-bottom:4px}.article p{color:#5f6d80}.faq details{background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:15px 17px;margin:9px 0}.faq summary{font-weight:700;cursor:pointer}.faq p{color:#687589;font-size:14px}
-.cta{background:#155eef;color:#fff;text-align:center;padding:40px 20px}.cta h2{margin:0 0 7px}.cta p{margin:0 0 18px}.cta a{background:#fff;color:#155eef;padding:10px 16px;border-radius:8px;font-weight:800}
-footer{background:#101827;color:#b8c2d1;padding:28px 0}.foot{display:flex;justify-content:space-between;gap:15px}.links{display:flex;gap:16px;flex-wrap:wrap;font-size:13px}
-@media(max-width:700px){
-.nav nav a:nth-child(4),.nav nav a:nth-child(5),.nav nav a:nth-child(6){display:none}
-.nav nav{gap:10px}
-.nav .btn{padding:10px 12px}
-.grid,.features{grid-template-columns:1fr}.results{grid-template-columns:repeat(2,1fr)}.foot{display:block}.links{margin-top:12px}}
-@media(max-width:420px){.results{grid-template-columns:1fr}}
-</style>
+  <title>Shopify Profit Calculator – Free COD & E-commerce Tool</title>
+  <meta name="description" content="Free Shopify profit calculator for COD and e-commerce sellers. Calculate sales, product cost, ad costs, delivery charges, profit margin and net profit.">
+  <meta name="robots" content="index,follow">
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f8fc;
+      color: #172033;
+      line-height: 1.6
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5eaf1;
+      position: sticky;
+      top: 0;
+      z-index: 5
+    }
+
+    .nav {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: #155eef;
+      text-decoration: none
+    }
+
+    .logo span {
+      color: #172033
+    }
+
+    .nav nav {
+      display: flex;
+      align-items: center;
+      gap: 22px
+    }
+
+    .nav nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #172033;
+      text-decoration: none
+    }
+
+    .nav nav a:hover {
+      color: #2563eb
+    }
+
+    .nav .btn {
+      background: #2563eb;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px
+    }
+
+    .nav .btn:hover {
+      color: #fff;
+      background: #1d4ed8
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 0 45px;
+      background: #fff
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 30px;
+      background: #eaf2ff;
+      color: #155eef;
+      font-weight: 700;
+      font-size: 13px
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.05;
+      margin: 18px auto 15px;
+      max-width: 850px
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #657287;
+      font-size: 18px
+    }
+
+    section {
+      padding: 45px 0
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e1e7ef;
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 12px 35px #1720330d
+    }
+
+    .head {
+      margin-bottom: 20px
+    }
+
+    .head h2 {
+      margin: 0;
+      font-size: 26px
+    }
+
+    .head p {
+      margin: 4px 0;
+      color: #718096;
+      font-size: 14px
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #39465a
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d6deea;
+      border-radius: 8px;
+      font-size: 15px
+    }
+
+    input:focus {
+      outline: 2px solid #d8e6ff;
+      border-color: #155eef
+    }
+
+    .calc {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      background: #155eef;
+      color: #fff;
+      padding: 14px;
+      border-radius: 9px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 11px;
+      margin-top: 23px
+    }
+
+    .result {
+      padding: 15px;
+      background: #f7f9fc;
+      border: 1px solid #e3e8f0;
+      border-radius: 10px
+    }
+
+    .result small {
+      display: block;
+      color: #687589;
+      font-size: 12px
+    }
+
+    .result strong {
+      font-size: 19px
+    }
+
+    .profit {
+      background: #edf8f1;
+      border-color: #ccebd7
+    }
+
+    .profit strong {
+      color: #168044
+    }
+
+    .loss {
+      background: #fff1f1;
+      border-color: #f0d0d0
+    }
+
+    .loss strong {
+      color: #c62828
+    }
+
+    .title {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 28px
+    }
+
+    .title h2 {
+      font-size: 30px;
+      margin: 0 0 6px
+    }
+
+    .title p {
+      color: #687589
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .feature {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 13px;
+      padding: 22px
+    }
+
+    .feature h3 {
+      margin: 6px 0
+    }
+
+    .feature p {
+      margin: 0;
+      color: #687589;
+      font-size: 14px
+    }
+
+    .article,
+    .faq {
+      max-width: 820px;
+      margin: auto
+    }
+
+    .article {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 28px
+    }
+
+    .article h2 {
+      margin-top: 0
+    }
+
+    .article h3 {
+      margin-bottom: 4px
+    }
+
+    .article p {
+      color: #5f6d80
+    }
+
+    .faq details {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 15px 17px;
+      margin: 9px 0
+    }
+
+    .faq summary {
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    .faq p {
+      color: #687589;
+      font-size: 14px
+    }
+
+    .cta {
+      background: #155eef;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px
+    }
+
+    .cta h2 {
+      margin: 0 0 7px
+    }
+
+    .cta p {
+      margin: 0 0 18px
+    }
+
+    .cta a {
+      background: #fff;
+      color: #155eef;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 800
+    }
+
+    footer {
+      background: #101827;
+      color: #b8c2d1;
+      padding: 28px 0
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px
+    }
+
+    .links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px
+    }
+
+    @media(max-width:700px) {
+
+      .nav nav a:nth-child(4),
+      .nav nav a:nth-child(5),
+      .nav nav a:nth-child(6) {
+        display: none
+      }
+
+      .nav nav {
+        gap: 10px
+      }
+
+      .nav .btn {
+        padding: 10px 12px
+      }
+
+      .grid,
+      .features {
+        grid-template-columns: 1fr
+      }
+
+      .results {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .foot {
+        display: block
+      }
+
+      .links {
+        margin-top: 12px
+      }
+    }
+
+    @media(max-width:420px) {
+      .results {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div id="site-header"></div>
-<script src="header.js"></script>
+  <div id="site-header"></div>
+  <script src="header.js"></script>
 
-<main id="home">
-<section class="hero"><div class="wrap"><span class="badge">100% Free E-commerce Tool</span><h1>Shopify Profit Calculator</h1><p>Calculate sales, product cost, advertising cost, delivery cost, profit margin and COD return performance in seconds.</p></div></section>
+  <main id="home">
+    <section class="hero">
+      <div class="wrap"><span class="badge">100% Free E-commerce Tool</span>
+        <h1>Shopify Profit Calculator</h1>
+        <p>Calculate sales, product cost, advertising cost, delivery cost, profit margin and COD return performance in
+          seconds.</p>
+      </div>
+    </section>
 
-<section id="calculator"><div class="wrap"><div class="card">
-<div class="head"><h2>Calculate Your Shopify Profit</h2><p>Enter your daily, weekly or campaign figures.</p></div>
-<div class="grid">
-<div><label>Received Orders</label><input id="received" type="number" min="0" value="100"></div>
-<div><label>Dispatch Orders</label><input id="dispatch" type="number" min="0" value="90"></div>
-<div><label>Delivered Orders</label><input id="delivered" type="number" min="0" value="45"></div>
-<div><label>Returned Orders</label><input id="returned" type="number" min="0" value="45"></div>
-<div><label>Selling Price / Delivered Order (Rs.)</label><input id="selling" type="number" min="0" value="1690"></div>
-<div><label>Product Cost / Order (Rs.)</label><input id="product" type="number" min="0" value="90"></div>
-<div><label>Ad Cost / Received Order (Rs.)</label><input id="ads" type="number" min="0" value="300"></div>
-<div><label>Delivery Cost / Dispatch (Rs.)</label><input id="delivery" type="number" min="0" value="230"></div>
-</div><button class="calc" onclick="calculate()">Calculate Profit</button><div class="results" id="results"></div>
-</div></div></section>
+    <section id="calculator">
+      <div class="wrap">
+        <div class="card">
+          <div class="head">
+            <h2>Calculate Your Shopify Profit</h2>
+            <p>Enter your daily, weekly or campaign figures.</p>
+          </div>
+          <div class="grid">
+            <div><label>Received Orders</label><input id="received" type="number" min="0" value="100"></div>
+            <div><label>Dispatch Orders</label><input id="dispatch" type="number" min="0" value="90"></div>
+            <div><label>Delivered Orders</label><input id="delivered" type="number" min="0" value="45"></div>
+            <div><label>Returned Orders</label><input id="returned" type="number" min="0" value="45"></div>
+            <div><label>Selling Price / Delivered Order (Rs.)</label><input id="selling" type="number" min="0"
+                value="1690"></div>
+            <div><label>Product Cost / Order (Rs.)</label><input id="product" type="number" min="0" value="90"></div>
+            <div><label>Ad Cost / Received Order (Rs.)</label><input id="ads" type="number" min="0" value="300"></div>
+            <div><label>Delivery Cost / Dispatch (Rs.)</label><input id="delivery" type="number" min="0" value="230">
+            </div>
+          </div><button class="calc" onclick="calculate()">Calculate Profit</button>
+          <div class="results" id="results"></div>
+        </div>
+      </div>
+    </section>
 
-<section id="about"><div class="wrap"><div class="title"><h2>Simple tools for e-commerce sellers</h2><p>Understand the numbers behind your store before increasing your ad spend or order volume.</p></div><div class="features">
-<div class="feature">📊<h3>Know Your Real Profit</h3><p>Include product, advertising and delivery costs for a clearer profit calculation.</p></div>
-<div class="feature">📦<h3>Track COD Performance</h3><p>See delivery rate, return rate and in-transit orders from your campaign numbers.</p></div>
-<div class="feature">⚡<h3>Fast & Free</h3><p>No sign-up required. Your calculation happens directly in your browser.</p></div>
-</div></div></section>
+    <section id="about">
+      <div class="wrap">
+        <div class="title">
+          <h2>Simple tools for e-commerce sellers</h2>
+          <p>Understand the numbers behind your store before increasing your ad spend or order volume.</p>
+        </div>
+        <div class="features">
+          <div class="feature">📊<h3>Know Your Real Profit</h3>
+            <p>Include product, advertising and delivery costs for a clearer profit calculation.</p>
+          </div>
+          <div class="feature">📦<h3>Track COD Performance</h3>
+            <p>See delivery rate, return rate and in-transit orders from your campaign numbers.</p>
+          </div>
+          <div class="feature">⚡<h3>Fast & Free</h3>
+            <p>No sign-up required. Your calculation happens directly in your browser.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="guide"><div class="wrap"><div class="article"><h2>How to Calculate Shopify Profit</h2><p>For COD e-commerce, sales alone do not show the complete picture. Profit depends on delivered orders and the costs required to acquire and fulfill them.</p><h3>Total Sales</h3><p>Selling Price × Delivered Orders</p><h3>Product Cost</h3><p>Product Cost per Order × Delivered Orders</p><h3>Advertising Cost</h3><p>Ad Cost per Received Order × Received Orders</p><h3>Delivery Cost</h3><p>Delivery Cost per Dispatch × Dispatch Orders</p><h3>Net Profit</h3><p>Total Sales − Product Cost − Advertising Cost − Delivery Cost</p><h3>Why return rate matters</h3><p>A high COD return rate can increase fulfillment costs and reduce the number of orders that generate revenue. Monitor delivery and return performance together with profit.</p></div></div></section>
+    <section id="guide">
+      <div class="wrap">
+        <div class="article">
+          <h2>How to Calculate Shopify Profit</h2>
+          <p>For COD e-commerce, sales alone do not show the complete picture. Profit depends on delivered orders and
+            the costs required to acquire and fulfill them.</p>
+          <h3>Total Sales</h3>
+          <p>Selling Price × Delivered Orders</p>
+          <h3>Product Cost</h3>
+          <p>Product Cost per Order × Delivered Orders</p>
+          <h3>Advertising Cost</h3>
+          <p>Ad Cost per Received Order × Received Orders</p>
+          <h3>Delivery Cost</h3>
+          <p>Delivery Cost per Dispatch × Dispatch Orders</p>
+          <h3>Net Profit</h3>
+          <p>Total Sales − Product Cost − Advertising Cost − Delivery Cost</p>
+          <h3>Why return rate matters</h3>
+          <p>A high COD return rate can increase fulfillment costs and reduce the number of orders that generate
+            revenue. Monitor delivery and return performance together with profit.</p>
+        </div>
+      </div>
+    </section>
 
-<section id="faq"><div class="wrap"><div class="title"><h2>Frequently Asked Questions</h2></div><div class="faq">
-<details><summary>Is this Shopify Profit Calculator free?</summary><p>Yes. It is free to use and does not require an account.</p></details>
-<details><summary>Does it work for COD businesses?</summary><p>Yes. It includes received, dispatched, delivered and returned orders.</p></details>
-<details><summary>What costs are included?</summary><p>Product cost, advertising cost and delivery cost are included.</p></details>
-<details><summary>Can I use it for daily ad campaigns?</summary><p>Yes. Enter figures for a day, week, month or any campaign period.</p></details>
-</div></div></section>
+    <section id="faq">
+      <div class="wrap">
+        <div class="title">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is this Shopify Profit Calculator free?</summary>
+            <p>Yes. It is free to use and does not require an account.</p>
+          </details>
+          <details>
+            <summary>Does it work for COD businesses?</summary>
+            <p>Yes. It includes received, dispatched, delivered and returned orders.</p>
+          </details>
+          <details>
+            <summary>What costs are included?</summary>
+            <p>Product cost, advertising cost and delivery cost are included.</p>
+          </details>
+          <details>
+            <summary>Can I use it for daily ad campaigns?</summary>
+            <p>Yes. Enter figures for a day, week, month or any campaign period.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
-<section class="cta"><div class="wrap"><h2>Calculate Your Profit Before Scaling</h2><p>Understand your numbers before increasing your advertising budget.</p><a href="#calculator">Open Calculator</a></div></section>
-</main>
+    <section class="cta">
+      <div class="wrap">
+        <h2>Calculate Your Profit Before Scaling</h2>
+        <p>Understand your numbers before increasing your advertising budget.</p><a href="#calculator">Open
+          Calculator</a>
+      </div>
+    </section>
+  </main>
 
-<footer><div class="wrap foot"><div>© 2026 EcomTools. All rights reserved.</div><div class="links"><a href="#about">About</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div></div></footer>
+  <footer>
+    <div class="wrap foot">
+      <div>© 2026 EcomTools. All rights reserved.</div>
+      <div class="links"><a href="#about">About</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy Policy</a><a
+          href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
 
-<script>
-const n=id=>Math.max(0,Number(document.getElementById(id).value)||0);
-const money=x=>"Rs. "+Math.round(x).toLocaleString("en-PK");
-function calculate(){
-let r=n("received"),d=n("dispatch"),v=n("delivered"),ret=n("returned"),s=n("selling"),p=n("product"),a=n("ads"),dc=n("delivery");
-let sales=s*v,pc=p*v,ac=a*r,del=dc*d,profit=sales-pc-ac-del;
-let margin=sales?profit/sales*100:0,pp=v?profit/v:0,dr=d?v/d*100:0,rr=d?ret/d*100:0,trans=Math.max(0,d-v-ret),ap=v?ac/v:0,be=v?(pc+ac+del)/v:0;
-let items=[["Total Sales",money(sales),""],["Product Cost",money(pc),""],["Advertising Cost",money(ac),""],["Delivery Cost",money(del),""],["Net Profit / Loss",money(profit),profit>=0?"profit":"loss"],["Profit Margin",margin.toFixed(2)+"%",profit>=0?"profit":"loss"],["Profit / Delivered Order",money(pp),""],["Delivery Rate",dr.toFixed(2)+"%",""],["Return Rate",rr.toFixed(2)+"%",""],["In-Transit Orders",Math.round(trans),""],["Ad Cost / Delivered",money(ap),""],["Break-even Selling Price",money(be),""]];
-document.getElementById("results").innerHTML=items.map(x=>'<div class="result '+x[2]+'"><small>'+x[0]+'</small><strong>'+x[1]+'</strong></div>').join("");
-}
-calculate();
-</script>
+  <script>
+    const n = id => Math.max(0, Number(document.getElementById(id).value) || 0);
+    const money = x => "Rs. " + Math.round(x).toLocaleString("en-PK");
+    function calculate() {
+      let r = n("received"), d = n("dispatch"), v = n("delivered"), ret = n("returned"), s = n("selling"), p = n("product"), a = n("ads"), dc = n("delivery");
+      let sales = s * v, pc = p * v, ac = a * r, del = dc * d, profit = sales - pc - ac - del;
+      let margin = sales ? profit / sales * 100 : 0, pp = v ? profit / v : 0, dr = d ? v / d * 100 : 0, rr = d ? ret / d * 100 : 0, trans = Math.max(0, d - v - ret), ap = v ? ac / v : 0, be = v ? (pc + ac + del) / v : 0;
+      let items = [["Total Sales", money(sales), ""], ["Product Cost", money(pc), ""], ["Advertising Cost", money(ac), ""], ["Delivery Cost", money(del), ""], ["Net Profit / Loss", money(profit), profit >= 0 ? "profit" : "loss"], ["Profit Margin", margin.toFixed(2) + "%", profit >= 0 ? "profit" : "loss"], ["Profit / Delivered Order", money(pp), ""], ["Delivery Rate", dr.toFixed(2) + "%", ""], ["Return Rate", rr.toFixed(2) + "%", ""], ["In-Transit Orders", Math.round(trans), ""], ["Ad Cost / Delivered", money(ap), ""], ["Break-even Selling Price", money(be), ""]];
+      document.getElementById("results").innerHTML = items.map(x => '<div class="result ' + x[2] + '"><small>' + x[0] + '</small><strong>' + x[1] + '</strong></div>').join("");
+    }
+    calculate();
+  </script>
 </body>
+
 </html>
