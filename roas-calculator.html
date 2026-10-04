@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROAS Calculator - Free E-commerce Advertising Calculator | EcomTools</title>
+<meta name="description" content="Free ROAS calculator for e-commerce. Calculate return on ad spend instantly from your ad revenue and advertising cost.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://shopify-cod-profit-calculator.pages.dev/roas-calculator.html">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f8fc;color:#172033;line-height:1.6}
+header{background:#fff;border-bottom:1px solid #e5eaf1}nav{max-width:1100px;margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.logo{font-size:23px;font-weight:800}.links{display:flex;gap:22px;font-size:14px;font-weight:600}.links a{text-decoration:none;color:inherit}
+.hero{text-align:center;padding:60px 20px 38px;background:#fff}.badge{display:inline-block;background:#eef4ff;color:#2563eb;padding:7px 12px;border-radius:30px;font-size:13px;font-weight:700}
+h1{font-size:42px;line-height:1.15;margin:18px auto 12px}.hero p{max-width:700px;margin:auto;color:#687589;font-size:17px}
+.wrap{max-width:850px;margin:25px auto 60px;padding:0 20px}.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px;margin-bottom:25px;box-shadow:0 8px 25px rgba(15,23,42,.06)}
+.card h2{text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+input{width:100%;padding:14px;border:1px solid #d6dde8;border-radius:10px;font-size:16px}button{width:100%;margin-top:20px;padding:15px;border:0;border-radius:10px;background:#2563eb;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.result{margin-top:22px;padding:22px;border-radius:12px;background:#f8fafc;text-align:center}.roas{font-size:42px;font-weight:800;color:#2563eb}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.metric{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px}.metric strong{display:block;font-size:18px}.metric span{font-size:12px;color:#687589}
+.formula{background:#f1f5f9;border-radius:10px;padding:16px;font-weight:700;text-align:center}.faq{border-top:1px solid #e5eaf1;padding:16px 0}
+footer{background:#101827;color:#b8c3d1;padding:28px 20px;text-align:center}footer a{margin:0 8px;color:inherit;text-decoration:none}
+@media(max-width:700px){.links{display:none}h1{font-size:32px}.grid,.result-grid{grid-template-columns:1fr}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header><nav><a class="logo" href="index.html">EcomTools</a><div class="links"><a href="index.html">Profit Calculator</a><a href="roas-calculator.html">ROAS Calculator</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav></header>
+<section class="hero"><span class="badge">FREE E-COMMERCE TOOL</span><h1>ROAS Calculator</h1><p>Calculate your Return on Ad Spend instantly and understand how efficiently your advertising budget is generating revenue.</p></section>
+<main class="wrap">
+<section class="card">
+<h2>Calculate Your ROAS</h2>
+<div class="grid">
+<div><label for="revenue">Ad Revenue</label><input id="revenue" type="number" min="0" step=".01" placeholder="e.g. 100000"></div>
+<div><label for="spend">Ad Spend</label><input id="spend" type="number" min="0" step=".01" placeholder="e.g. 25000"></div>
+</div>
+<button onclick="calculate()">Calculate ROAS</button>
+<div id="result" class="result" style="display:none"><div>Your ROAS</div><div id="roas" class="roas">0.00x</div><div class="result-grid"><div class="metric"><strong id="rev">0</strong><span>Ad Revenue</span></div><div class="metric"><strong id="ads">0</strong><span>Ad Spend</span></div></div></div>
+</section>
+<section class="card">
+<h2>What Is ROAS?</h2>
+<p>ROAS stands for <strong>Return on Ad Spend</strong>. It measures how much revenue your advertising generates for every unit spent on ads.</p>
+<div class="formula">ROAS = Ad Revenue ÷ Ad Spend</div>
+<h3>Example</h3><p>If your ads generate PKR 100,000 in revenue and you spend PKR 25,000 on advertising:</p>
+<p class="formula">100,000 ÷ 25,000 = 4.00x ROAS</p>
+<p>This means you generated PKR 4 in attributed revenue for every PKR 1 spent on advertising.</p>
+<h2>ROAS vs Profit</h2>
+<p>A high ROAS does not automatically mean your business is profitable. Product cost, shipping, returns, payment fees and other expenses also affect actual profit.</p>
+<p>Use our <a href="index.html" style="color:#2563eb;font-weight:700">Shopify Profit Calculator</a> to estimate net profit after major costs.</p>
+<h2>Frequently Asked Questions</h2>
+<div class="faq"><strong>What is a good ROAS?</strong><p>There is no single good ROAS for every business. Your break-even ROAS depends on your margins and other costs.</p></div>
+<div class="faq"><strong>Can ROAS be less than 1?</strong><p>Yes. A ROAS of 0.80x means you generated 0.80 in revenue for every 1.00 spent on ads.</p></div>
+<div class="faq"><strong>Does ROAS equal profit?</strong><p>No. ROAS measures advertising efficiency, while profit considers your other business expenses too.</p></div>
+</section>
+</main>
+<footer>© 2026 EcomTools. All rights reserved.<br><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></footer>
+<script>
+function calculate(){
+ const revenue=parseFloat(document.getElementById('revenue').value), spend=parseFloat(document.getElementById('spend').value);
+ if(!isFinite(revenue)||revenue<0||!isFinite(spend)||spend<=0){alert('Please enter valid revenue and an ad spend greater than 0.');return;}
+ document.getElementById('roas').textContent=(revenue/spend).toFixed(2)+'x';
+ document.getElementById('rev').textContent=revenue.toLocaleString();
+ document.getElementById('ads').textContent=spend.toLocaleString();
+ document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>
