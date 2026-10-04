@@ -5,9 +5,7 @@ const links = [
   ["roas-calculator.html", "ROAS Calculator"],
   ["break-even-roas.html", "Break-Even ROAS"],
   ["product-margin-calculator.html", "Product Margin"],
-  ["index.html#guide", "Guide"],
-  ["index.html#faq", "FAQ"],
-  ["index.html#about", "About"]
+  
 ];
 
 const headerStyles = `
