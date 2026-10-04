@@ -39,4 +39,4 @@ const nav = links.map(([href,label]) => {
 
 document.getElementById("site-header").innerHTML =
   headerStyles +
-  `<header><div class="wrap nav"><a class="logo" href="index.html">Ecom<span>Tools</span></a><nav>${nav}<a class="btn" href="index.html#calculator">Calculate Profit</a></nav></div></header>`;
+  `<header><div class="wrap nav"><a class="logo" href="index.html">Ecom<span>Tools</span></a><nav>${nav}</nav></div></header>`;
