@@ -1,4 +1,15 @@
-const currentPage = window.location.pathname.split("/").pop() || "index.html";
+const currentPath = window.location.pathname.replace(/\/$/, "");
+
+const currentPage =
+  currentPath === "" || currentPath === "/"
+    ? "index.html"
+    : currentPath.endsWith("roas-calculator")
+    ? "roas-calculator.html"
+    : currentPath.endsWith("break-even-roas")
+    ? "break-even-roas.html"
+    : currentPath.endsWith("product-margin-calculator")
+    ? "product-margin-calculator.html"
+    : "index.html";
 
 const links = [
   ["index.html", "Profit Calculator"],
