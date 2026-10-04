@@ -1,91 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Break-Even ROAS Calculator - Free E-commerce Tool | EcomTools</title>
 <meta name="description" content="Free Break-Even ROAS Calculator for e-commerce. Calculate the minimum ROAS needed to cover product and other variable costs before advertising profit begins.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://shopify-cod-profit-calculator.pages.dev/break-even-roas.html">
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f8fc;color:#172033;line-height:1.6}
-header{background:#fff;border-bottom:1px solid #e5eaf1}nav{max-width:1100px;margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
-.logo{font-size:23px;font-weight:800;color:#2563eb;text-decoration:none}.links{display:flex;gap:22px;font-size:14px;font-weight:600}.links a{color:inherit;text-decoration:none}
+
+header{background:#fff;border-bottom:1px solid #e5eaf1;position:sticky;top:0;z-index:5}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:800;color:#1769e8;text-decoration:none}
+.logo span{color:#1769e8}
+.nav nav{display:flex;align-items:center;gap:22px}
+.nav nav a{font-size:14px;font-weight:600;color:#172033;text-decoration:none}
+.nav nav a:hover{color:#2563eb}
+.nav .btn{background:#2563eb;color:#fff;padding:12px 16px;border-radius:8px}
+.nav .btn:hover{color:#fff;background:#1d4ed8}
+@media(max-width:700px){
+  .nav nav a:nth-child(4),.nav nav a:nth-child(5),.nav nav a:nth-child(6){display:none}
+  .nav nav{gap:10px}
+  .nav .btn{padding:10px 12px}
+}
+
 .hero{text-align:center;padding:60px 20px 38px;background:#fff}.badge{display:inline-block;background:#eef4ff;color:#2563eb;padding:7px 12px;border-radius:30px;font-size:13px;font-weight:700}
 h1{font-size:40px;line-height:1.15;margin:18px auto 12px}.hero p{max-width:720px;margin:auto;color:#687589;font-size:17px}
-.wrap{max-width:850px;margin:25px auto 60px;padding:0 20px}.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px;margin-bottom:25px;box-shadow:0 8px 25px rgba(15,23,42,.06)}
+.wrap-content{max-width:850px;margin:25px auto 60px;padding:0 20px}.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px;margin-bottom:25px;box-shadow:0 8px 25px rgba(15,23,42,.06)}
 .card h2{text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
 input{width:100%;padding:14px;border:1px solid #d6dde8;border-radius:10px;font-size:16px}button{width:100%;margin-top:20px;padding:15px;border:0;border-radius:10px;background:#2563eb;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
 .result{margin-top:22px;padding:22px;border-radius:12px;background:#f8fafc;text-align:center}.roas{font-size:42px;font-weight:800;color:#2563eb}
 .metric{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;margin-top:16px}.metric strong{display:block;font-size:18px}.metric span{font-size:12px;color:#687589}
-.formula{background:#f1f5f9;border-radius:10px;padding:16px;font-weight:700;text-align:center}
-.faq{border-top:1px solid #e5eaf1;padding:16px 0}
+.formula{background:#f1f5f9;border-radius:10px;padding:16px;font-weight:700;text-align:center}.faq{border-top:1px solid #e5eaf1;padding:16px 0}
 footer{background:#101827;color:#b8c3d1;padding:28px 20px;text-align:center}footer a{margin:0 8px;color:inherit;text-decoration:none}
-@media(max-width:700px){.links{display:none}h1{font-size:31px}.grid{grid-template-columns:1fr}.card{padding:20px}}
-</style>
-</head>
-<body>
-<header><nav><a class="logo" href="index.html">EcomTools</a><div class="links">
-<a href="index.html">Profit Calculator</a><a href="roas-calculator.html">ROAS Calculator</a><a href="break-even-roas.html">Break-Even ROAS</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-</div></nav></header>
-
-<section class="hero"><span class="badge">FREE E-COMMERCE TOOL</span>
-<h1>Break-Even ROAS Calculator</h1>
-<p>Find the minimum Return on Ad Spend your store needs to cover product and other variable costs before your advertising becomes profitable.</p>
-</section>
-
-<main class="wrap">
-<section class="card">
-<h2>Calculate Your Break-Even ROAS</h2>
-<div class="grid">
-<div><label for="price">Selling Price Per Order</label><input id="price" type="number" min="0" step=".01" placeholder="e.g. 2500"></div>
+@media(max-width:700px){h1{font-size:31px}.grid{grid-template-columns:1fr}.card{padding:20px}}
+</style></head><body>
+<header><div class="wrap nav"><a class="logo" href="index.html">Ecom<span>Tools</span></a><nav><a href="index.html">Profit Calculator</a><a href="roas-calculator.html">ROAS Calculator</a><a href="break-even-roas.html">Break-Even ROAS</a><a href="index.html#guide">Guide</a><a href="index.html#faq">FAQ</a><a href="index.html#about">About</a><a class="btn" href="index.html#calculator">Calculate Profit</a></nav></div></header>
+<section class="hero"><span class="badge">FREE E-COMMERCE TOOL</span><h1>Break-Even ROAS Calculator</h1><p>Find the minimum Return on Ad Spend your store needs to cover product and other variable costs before your advertising becomes profitable.</p></section>
+<main class="wrap-content"><section class="card"><h2>Calculate Your Break-Even ROAS</h2>
+<div class="grid"><div><label for="price">Selling Price Per Order</label><input id="price" type="number" min="0" step=".01" placeholder="e.g. 2500"></div>
 <div><label for="product">Product Cost Per Order</label><input id="product" type="number" min="0" step=".01" placeholder="e.g. 1000"></div>
-<div><label for="other">Other Variable Costs Per Order</label><input id="other" type="number" min="0" step=".01" placeholder="e.g. 200"></div>
-</div>
+<div><label for="other">Other Variable Costs Per Order</label><input id="other" type="number" min="0" step=".01" placeholder="e.g. 200"></div></div>
 <button onclick="calculate()">Calculate Break-Even ROAS</button>
-<div id="result" class="result" style="display:none">
-<div>Your Break-Even ROAS</div><div id="roas" class="roas">0.00x</div>
-<div class="metric"><strong id="margin">0%</strong><span>Contribution Margin Before Ad Spend</span></div>
-</div>
-</section>
-
-<section class="card">
-<h2>What Is Break-Even ROAS?</h2>
-<p>Break-even ROAS is the minimum ROAS at which your advertising revenue covers your product cost and other variable costs. At this point, your advertising profit is approximately zero before fixed business expenses.</p>
+<div id="result" class="result" style="display:none"><div>Your Break-Even ROAS</div><div id="roas" class="roas">0.00x</div><div class="metric"><strong id="margin">0%</strong><span>Contribution Margin Before Ad Spend</span></div></div></section>
+<section class="card"><h2>What Is Break-Even ROAS?</h2><p>Break-even ROAS is the minimum ROAS at which your advertising revenue covers your product cost and other variable costs. At this point, your advertising profit is approximately zero before fixed business expenses.</p>
 <div class="formula">Break-Even ROAS = Selling Price ÷ (Selling Price − Product Cost − Other Variable Costs)</div>
-<h3>Example</h3>
-<p>If your selling price is PKR 2,500, product cost is PKR 1,000 and other variable costs are PKR 200:</p>
-<p class="formula">2,500 ÷ (2,500 − 1,000 − 200) = 1.92x</p>
-<p>Your advertising ROAS would need to be about <strong>1.92x</strong> just to cover these variable costs. A ROAS above this level can leave room for advertising profit and other business expenses.</p>
-<h2>Why Break-Even ROAS Matters</h2>
-<p>A ROAS number by itself does not tell you whether an e-commerce campaign is profitable. Your product margin, shipping, payment fees, returns and other variable expenses affect the minimum ROAS you need.</p>
-<p>For a broader view of your store economics, use the <a href="index.html" style="color:#2563eb;font-weight:700">Shopify Profit Calculator</a> and compare your actual advertising performance with your break-even point.</p>
-<h2>Frequently Asked Questions</h2>
-<div class="faq"><strong>What does a 2x break-even ROAS mean?</strong><p>It means you need PKR 2 of attributed revenue for every PKR 1 spent on advertising just to cover the variable costs included in the calculation.</p></div>
+<h3>Example</h3><p>If your selling price is PKR 2,500, product cost is PKR 1,000 and other variable costs are PKR 200:</p><p class="formula">2,500 ÷ (2,500 − 1,000 − 200) = 1.92x</p><p>Your advertising ROAS would need to be about <strong>1.92x</strong> just to cover these variable costs.</p>
+<h2>Why Break-Even ROAS Matters</h2><p>A ROAS number by itself does not tell you whether an e-commerce campaign is profitable. Your product margin, shipping, payment fees, returns and other variable expenses affect the minimum ROAS you need.</p>
+<p>For a broader view, use our <a href="index.html" style="color:#2563eb;font-weight:700">Shopify Profit Calculator</a> and compare your advertising performance with your break-even point.</p>
+<h2>Frequently Asked Questions</h2><div class="faq"><strong>What does a 2x break-even ROAS mean?</strong><p>It means you need PKR 2 of attributed revenue for every PKR 1 spent on advertising just to cover the variable costs included in the calculation.</p></div>
 <div class="faq"><strong>Is break-even ROAS the same for every store?</strong><p>No. It changes with your product margin and other variable costs.</p></div>
-<div class="faq"><strong>Should I include fixed costs?</strong><p>This calculator focuses on per-order variable costs. Fixed expenses such as salaries or monthly software subscriptions are not included.</p></div>
-</section>
-</main>
-
-<footer>© 2026 EcomTools. All rights reserved.<br>
-<a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a>
-</footer>
-
-<script>
-function calculate(){
- const price=parseFloat(document.getElementById('price').value);
- const product=parseFloat(document.getElementById('product').value);
- const other=parseFloat(document.getElementById('other').value)||0;
- const contribution=price-product-other;
- if(!isFinite(price)||price<=0||!isFinite(product)||product<0||!isFinite(other)||other<0||contribution<=0){
-   alert('Please enter valid costs and make sure total costs are lower than the selling price.'); return;
- }
- const roas=price/contribution;
- const margin=(contribution/price)*100;
- document.getElementById('roas').textContent=roas.toFixed(2)+'x';
- document.getElementById('margin').textContent=margin.toFixed(2)+'%';
- document.getElementById('result').style.display='block';
-}
-</script>
-</body>
-</html>
+<div class="faq"><strong>Should I include fixed costs?</strong><p>This calculator focuses on per-order variable costs. Fixed expenses such as salaries or monthly software subscriptions are not included.</p></div></section></main>
+<footer>© 2026 EcomTools. All rights reserved.<br><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a></footer>
+<script>function calculate(){const price=parseFloat(document.getElementById('price').value),product=parseFloat(document.getElementById('product').value),other=parseFloat(document.getElementById('other').value)||0,contribution=price-product-other;if(!isFinite(price)||price<=0||!isFinite(product)||product<0||!isFinite(other)||other<0||contribution<=0){alert('Please enter valid costs and make sure total costs are lower than the selling price.');return;}document.getElementById('roas').textContent=(price/contribution).toFixed(2)+'x';document.getElementById('margin').textContent=((contribution/price)*100).toFixed(2)+'%';document.getElementById('result').style.display='block';}</script>
+</body></html>
